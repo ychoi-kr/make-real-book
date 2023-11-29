@@ -113,6 +113,16 @@
                     this.dy = -this.dy;
                 }
                 
+                // Collision with bottom wall
+                if (this.y + this.dy > canvas.height - this.radius) {
+                    // 게임 종료 처리
+                    game.over();
+                    // 공을 초기 위치로 재설정
+                    this.x = canvas.width / 2;
+                    this.y = canvas.height - 30;
+                    this.dx = 2;
+                    this.dy = -2;
+                }
             }
         };
 
@@ -195,6 +205,7 @@
             over: function() {
                 gameStarted = false;
                 document.getElementById('gameStartButton').classList.add('visible');
+
                 // 게임 오버 로직 추가 (옵션)
             }
         };
